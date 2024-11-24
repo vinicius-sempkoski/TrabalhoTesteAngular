@@ -1,0 +1,26 @@
+<div>
+  <h1>Favoritos</h1>
+
+  <p *ngIf="mensagem" class="mensagem">{{ mensagem }}</p>
+
+  <ul *ngIf="favoritos.length > 0">
+    <li *ngFor="let filme of favoritos; let i = index">
+      <article>
+        <div class="film-content">
+          <img [src]="filme.Poster" alt="Poster de {{ filme.Title }}" *ngIf="filme.Poster !== 'N/A'" />
+          <div class="film-info">
+            <h2>{{ filme.Title }} ({{ filme.Year }})</h2>
+            <p><strong>Classificação:</strong> {{ filme.Rated }}</p>
+            <p><strong>Atores:</strong> {{ filme.Actors }}</p>
+            <p><strong>Sinopse:</strong> {{ filme.Plot }}</p>
+            <p><strong>Prêmios:</strong> {{ filme.Awards }}</p>
+            <p><strong>Tempo de Duração:</strong> {{ filme.Runtime }}</p>
+          </div>
+        </div>
+        <button class="actions" (click)="removerFavorito(i)">Remover dos Favoritos</button>
+      </article>
+    </li>
+  </ul>
+
+  <p *ngIf="favoritos.length === 0">Nenhum favorito encontrado.</p>
+</div>
